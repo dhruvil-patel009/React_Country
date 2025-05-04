@@ -1,0 +1,17 @@
+[
+  {
+    "icon": "MdPlace",
+    "title": "Find us",
+    "details": "Ahemdabad, Gujart"
+  },
+  {
+    "icon": "IoCallSharp",
+    "title": "Call us",
+    "details": "9924897138"
+  },
+  {
+    "icon": "TbMailPlus",
+    "title": "Mail us",
+    "details": "Demo@gmail.com"
+  }
+]
