@@ -74,9 +74,9 @@ export const CountryDetails = () => {
                                 </p>
                                 <p>
                                     <span className="card-description">Languages: </span>
-                                    {/* {Object.keys(country.languages)
+                                    {Object.keys(country.languages)
                                         .map((key) => country.languages[key])
-                                        .join(", ")} */}
+                                        .join(", ")}
                                 </p>
                             </div>
                         </div>
