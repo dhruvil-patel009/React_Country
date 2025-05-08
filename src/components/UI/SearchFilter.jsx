@@ -1,38 +1,56 @@
-export const SearchFilter = ({ search, setSearch, filter, setFilter }) => {
-    const handleInputChange = (event) => {
-        event.preventDefault();
-        setSearch(event.target.value);
-    };
+export const SearchFilter = ({
+  search,
+  setSearch,
+  filter,
+  setFilter,
+  countries,
+  setCountries,
+}) => {
+  const handleInputChange = (event) => {
+    event.preventDefault();
+    setSearch(event.target.value);
+  };
 
-    const handleSelectChange = (event) => {
-        event.preventDefault();
-        setFilter(event.target.value);
-    };
-    return (
-        <section className="section-searchFilter container">
-            <div>
-                <input
-                    type="text"
-                    placeholder="search"
-                    value={search}
-                    onChange={handleInputChange}
-                />
-            </div>
+  const handleSelectChange = (event) => {
+    event.preventDefault();
+    setFilter(event.target.value);
+  };
 
-            <div>
-                <select
-                    className="select-section"
-                    value={filter}
-                    onChange={handleSelectChange}
-                >
-                    <option value="all">All</option>
-                    <option value="Africa">Africa</option>
-                    <option value="Americas">Americas</option>
-                    <option value="Asia">Asia</option>
-                    <option value="Europe">Europe</option>
-                    <option value="Oceania">Oceania</option>
-                </select>
-            </div>
-        </section>
-    );
+  const sortCountries = (value) => {
+    const sortCountry = [...countries].sort((a,b) => {   // not change a Original Data Copy the Countries and then sort using [...]
+      return value === "asc"
+        ? a.name.common.localeCompare(b.name.common)
+        : b.name.common.localeCompare(a.name.common);
+    });
+    setCountries(sortCountry);  // asc and desc data are update in setCoutries 
+  };
+  return (
+    <section className="section-searchFilter container">
+      <div>
+        <input
+          type="text"
+          placeholder="search"
+          value={search}
+          onChange={handleInputChange}
+        />
+      </div>
+
+      <button onClick={() => sortCountries("asc")}>Asc</button>
+      <button onClick={() => sortCountries("des")}>Desc</button>
+      <div>
+        <select
+          className="select-section"
+          value={filter}
+          onChange={handleSelectChange}
+        >
+          <option value="all">All</option>
+          <option value="Africa">Africa</option>
+          <option value="Americas">Americas</option>
+          <option value="Asia">Asia</option>
+          <option value="Europe">Europe</option>
+          <option value="Oceania">Oceania</option>
+        </select>
+      </div>
+    </section>
+  );
 };
